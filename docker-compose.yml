@@ -1,0 +1,31 @@
+version: 3.6
+
+services:
+  # db:
+  #   image: mongo:latest
+  #   volumes:
+  #     - mongo:/data/db
+
+  app:
+    container_name: note-app
+    build: app
+    volumes:
+      - '.:/usr/src/app'
+      - '/usr/src/app/node_modules'
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=development
+
+  # server: 
+  #   container_name: note-server
+  #   build: server
+  #   links: 
+  #     - db
+  #   ports: 
+  #     - '5000:5000'
+  #   environment:
+  #     - APP_SECRET=CHANGE_ME
+  #     - FIRST_USER=CHANGE_ME
+  #     - FIRST_USER_PASSWORD=CHAN
+  #     - OTP_SECRET=CHANGEMEbase3232

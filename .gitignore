@@ -1,0 +1,14 @@
+**/.DS_Store
+env
+.idea
+.vscode
+**/__pycache__
+node_modules
+site/app/static
+
+# Flask 
+instance
+
+backups
+docker_cmds.txt
+build
