@@ -20,7 +20,7 @@ export default function notes(state = initialState, action) {
         case RECEIVE_ADD_NOTE:
             return state.update('notes', notes => notes.push(action.payload.note))
         case RECEIVE_DELETE_NOTE:
-            return state.update('notes', notes => notes.delete(state.get('notes').findIndex(note => note._id === action.payload.note._id)))
+            return state.update('notes', notes => notes.delete(state.get('notes').findIndex(note => note._id === action.payload.deleted_id)))
             // state.notes = state.notes.filter(note => note._id !== action.payload.note._id)
         case RECIEVE_NOTES:
             return state.set('notes', List(action.payload.notes))

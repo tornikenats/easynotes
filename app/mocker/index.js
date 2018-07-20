@@ -48,10 +48,10 @@ const proxy = {
   },
   'DELETE /api/v1/notes/:_id': (req, res) => {
     const { _id } = req.params;
-    if(notes.some(note => note._id === _id)){
+    if (notes.some(note => note._id === _id)) {
       notes = notes.filter(note => note._id !== _id)
     }
-    return res.json(notes);
+    return res.json({ deleted_id: _id });
   },
   // AUTH
   'POST /api/v1/auth/login': (req, res) => {

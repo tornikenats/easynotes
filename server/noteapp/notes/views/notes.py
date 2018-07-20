@@ -44,4 +44,4 @@ class Notes(MethodView):
             })
 
         mongo.db.entries.delete_one({'_id': note_id})
-        return jsonify({'status': 0})
+        return jsonify({'deleted_id': note_id})

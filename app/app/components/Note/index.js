@@ -12,7 +12,7 @@ class Note extends React.Component {
     render() {
         const { note, onDelete, onSelect, active } = this.props
         return (
-            <Wrapper onClick={() => onSelect(note)}>
+            <Wrapper onClick={e => e.target !== this.deleteBtn && onSelect(note)}>
                 <Edit active={active} />
                 {note.tags && note.tags.map(tag =>
                     <Tag
@@ -20,10 +20,11 @@ class Note extends React.Component {
                         text={tag}
                     />
                 )}
-                <Linkify tagName="div" properties={{ target: '_blank' }}>
+                <Linkify tagName="div" properties={{target: '_blank'}}>
                     {note.text}
                 </Linkify>
-                <Delete onClick={() => onDelete(note)} />
+                <Delete onClick={() => onDelete(note)}
+                    innerRef={deleteBtn => this.deleteBtn = deleteBtn} />
             </Wrapper>
         )
     }

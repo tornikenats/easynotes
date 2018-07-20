@@ -13,10 +13,10 @@ export const receiveAddNote = note => ({
     payload: { note }
 })
 
-export const receiveDeleteNote = note => ({
+export const receiveDeleteNote = json => ({
     type: RECEIVE_DELETE_NOTE,
     payload: {
-        note
+        deleted_id: json.deleted_id
     }
 })
 
@@ -62,7 +62,7 @@ export const addNote = new_note => {
 export const deleteNote = note => {
     return dispatch => {
         notes.deleteNote(note._id)
-            .then(json => dispatch(receiveDeleteNote(note)))
+            .then(json => dispatch(receiveDeleteNote(json)))
     }
 }
 export const selectNote = note => {
