@@ -1,10 +1,10 @@
 {
   "name": "easynotes",
-  "version": "0.1",
+  "version": "0.0.1",
   "description": "A simple, secure way way to store notes",
   "main": "webpack.common.js",
   "scripts": {
-    "start": "webpack-dev-server --config webpack.dev.js",
+    "start": "webpack-dev-server --host 0.0.0.0 --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js"
   },
   "repository": "https://github.com/TornikeNatsvlishvili/easynotes",

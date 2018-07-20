@@ -42,6 +42,7 @@ module.exports = require('./webpack.common')({
         hints: false,
     },
     devServer: {
+        historyApiFallback: true,
         before(app) {
             apiMocker(app, path.resolve('./mocker/index.js'), {
                 proxy: {

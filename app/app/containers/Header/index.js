@@ -9,6 +9,7 @@ import Container from 'components/Container'
 import Button from 'components/Button'
 import { createStructuredSelector } from 'reselect'
 import { makeSelectIsAuthenticated, makeSelectCurrentUser } from 'containers/Login/selector'
+
 let Header = ({ user, isAuthenticated, logout }) => {
     return (
         <Navigation>

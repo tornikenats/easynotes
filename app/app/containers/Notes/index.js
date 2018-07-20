@@ -9,9 +9,18 @@ import { createStructuredSelector } from 'reselect'
 import injectReducer from 'utils/injectReducer'
 import reducer from './reducer'
 import { compose } from 'redux'
+import Header from 'containers/Header'
+import Container from 'components/Container'
+import styled from 'styled-components'
+
+const NoteWrapper = styled.div`
+    margin-top: 6.2rem;
+`
 
 const NoteList = ({ notes }) => (
-    <div>
+    <NoteWrapper>
+        <Header />
+        <Container>
         <EntryContainer />
         <List>
             {notes.map(note =>
@@ -21,7 +30,8 @@ const NoteList = ({ notes }) => (
                 />
             )}
         </List>
-    </div>
+        </Container>
+    </NoteWrapper>
 )
 
 const mapStateToProps = createStructuredSelector({

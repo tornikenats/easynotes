@@ -1,31 +1,29 @@
-version: 3.6
+version: '3.6'
 
 services:
-  # db:
-  #   image: mongo:latest
-  #   volumes:
-  #     - mongo:/data/db
+  db:
+    image: mongo:latest
+    volumes:
+      - mongo:/data/db
 
   app:
-    container_name: note-app
-    build: app
-    volumes:
-      - '.:/usr/src/app'
-      - '/usr/src/app/node_modules'
+    container_name: sample-app
+    build:
+      context: ./app
+      dockerfile: Dockerfile-prod
     ports:
-      - '3000:3000'
-    environment:
-      - NODE_ENV=development
+      - '80:80'
 
-  # server: 
-  #   container_name: note-server
-  #   build: server
-  #   links: 
-  #     - db
-  #   ports: 
-  #     - '5000:5000'
-  #   environment:
-  #     - APP_SECRET=CHANGE_ME
-  #     - FIRST_USER=CHANGE_ME
-  #     - FIRST_USER_PASSWORD=CHAN
-  #     - OTP_SECRET=CHANGEMEbase3232
+  server: 
+    container_name: note-server
+    build: server
+    links: 
+      - db
+    ports: 
+      - '80:5000'
+    environment:
+      - APP_SECRET=CHANGE_ME
+      - FIRST_USER=CHANGE_ME
+      - FIRST_USER_PASSWORD=CHAN
+      - OTP_SECRET=CHANGEMEbase3232
+  
