@@ -4,26 +4,35 @@ services:
   db:
     image: mongo:latest
     volumes:
-      - mongo:/data/db
+      - /var/mongo_data:/data/db
 
   app:
-    container_name: sample-app
+    container_name: notes-app
     build:
       context: ./app
       dockerfile: Dockerfile-prod
+    image: registry.skivri.ge:443/notes-app
     ports:
-      - '80:80'
+      - 5000:80
+    volumes:
+      - /etc/letsencrypt/live/notes.skivri.ge:/certs
 
   server: 
-    container_name: note-server
+    container_name: notes-server
     build: server
-    links: 
-      - db
-    ports: 
-      - '80:5000'
-    environment:
-      - APP_SECRET=CHANGE_ME
-      - FIRST_USER=CHANGE_ME
-      - FIRST_USER_PASSWORD=CHAN
-      - OTP_SECRET=CHANGEMEbase3232
+    image: registry.skivri.ge:443/notes-server
+    secrets:
+      - APP_SECRET
+      - FIRST_USER
+      - FIRST_USER_PASSWORD
+      - OTP_SECRET
   
+secrets:
+  APP_SECRET:
+    external: true
+  FIRST_USER:
+    external: true
+  FIRST_USER_PASSWORD:
+    external: true
+  OTP_SECRET:
+    external: true

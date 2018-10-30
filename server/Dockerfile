@@ -1,4 +1,4 @@
-FROM python:3.6
+FROM python:3.7-slim
 
 COPY . /noteapp
 COPY autoapp.py autoapp.py
@@ -9,4 +9,4 @@ RUN pip install -r requirements.txt
 EXPOSE 5000
 
 ENTRYPOINT ["gunicorn"]
-CMD ["-w 3", "-b :5000", "autoapp:app"]
+CMD ["-c", "gunicorn.conf", "autoapp:app"]

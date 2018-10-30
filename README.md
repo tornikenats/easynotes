@@ -27,22 +27,19 @@ ssl_certificate <your-fullchain.pem>;
 ssl_certificate_key <your-privkey.pem>;
 ```
 
-#### Set app secret and first user credentials
-```
-# docker-compose.yml
-environment:
-  - APP_SECRET=CHANGE_ME
-  - FIRST_USER=CHANGE_ME
-  - FIRST_USER_PASSWORD=CHAN
-  - PYOTP_SECRET_KEY=CHANGEMEbase3232
-``` 
+#### Set app secret and first user credentials with Docker Secrets
 
-### Launching
-```
-cd easynotes
-docker-compose build
-docker-compose up -d
-```
+* APP_SECRET
+  * default: CHANGE_ME
+* FIRST_USER
+  * default: CHANGE_ME
+* FIRST_USER_PASSWORD
+  * default: CHAN
+* PYOTP_SECRET_KEY
+  * default: CHANGEMEbase3232
+
+#### Building
+Use the supplied makefile.
 
 ## License
 
