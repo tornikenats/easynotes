@@ -14,22 +14,22 @@ import Container from 'components/Container'
 import styled from 'styled-components'
 
 const NoteWrapper = styled.div`
-    margin-top: 6.2rem;
+    margin-top: 5.2rem;
 `
 
 const NoteList = ({ notes }) => (
     <NoteWrapper>
         <Header />
         <Container>
-        <EntryContainer />
-        <List>
-            {notes.map(note =>
-                <NoteContainer
-                    key={note.ts}
-                    note={note}
-                />
-            )}
-        </List>
+            <EntryContainer />
+            <List>
+                {notes.map(note =>
+                    <NoteContainer
+                        key={note.ts}
+                        note={note}
+                    />
+                )}
+            </List>
         </Container>
     </NoteWrapper>
 )

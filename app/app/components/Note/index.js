@@ -29,6 +29,8 @@ class Note extends React.Component {
         )
     }
 }
-// Note.propTypes = PropTypes.
+Note.propTypes = {
+
+}
 
 export default Note

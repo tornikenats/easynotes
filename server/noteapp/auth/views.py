@@ -4,7 +4,7 @@ from .models import User
 from .helper import hash_password, is_authenticated
 import re 
 
-auth = Blueprint('auth', __name__, url_prefix='/auth')
+auth = Blueprint('auth', __name__)
 
 
 @auth.route('/login', methods=['POST'])
@@ -77,7 +77,7 @@ def status():
     }), 200
 
 
-@auth.route('/logout')
+@auth.route('/logout', methods=['POST'])
 def logout():
     flask_login.logout_user()
     return jsonify({'status': 0})
