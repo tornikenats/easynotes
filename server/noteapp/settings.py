@@ -18,7 +18,7 @@ class ProdConfig(Config):
 
     ENV = 'prod'
     DEBUG = False
-    MONGO_URI = 'mongodb://db/notes'
+    MONGO_URI = 'mongodb://mongodb/notes'
 
 
 class DevConfig(Config):

@@ -38,8 +38,13 @@ ssl_certificate_key <your-privkey.pem>;
 * PYOTP_SECRET_KEY
   * default: CHANGEMEbase3232
 
-#### Building
-Use the supplied makefile.
+#### Structure
+* Backend (port: 5000)
+* Frontend 
+    * port: 8080
+    * exposes: 8081
+* Mongodb (port: 27017)
+
 
 ## License
 

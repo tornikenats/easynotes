@@ -15,13 +15,20 @@ push: images
 	docker push ${HOST}:443/notes-app
 	docker push ${HOST}:443/notes-server
 
-prod: push
+prod:
 	printf "${GREEN}Deploying images to ${HOST}${NC}\n"
 	MONGO_DATA_DIR=/var/lib/mongo docker stack deploy -c docker-compose.yml --with-registry-auth easynotes
+
+prod-clean:
+	docker stack rm easynotes
 
 local: images
 	printf "${GREEN}Deploying images locally${NC}\n"
 	MONGO_DATA_DIR=/usr/local/var/mongodb docker stack deploy -c docker-compose.yml --with-registry-auth easynotes
 
-down:
-	docker stack rm easynotes
+dev:
+	docker-compose -f docker-compose.dev.yml build
+	docker-compose -f docker-compose.dev.yml up -d
+
+stop:
+	docker-compose -f docker-compose.dev.yml down

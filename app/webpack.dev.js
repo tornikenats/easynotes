@@ -43,13 +43,14 @@ module.exports = require('./webpack.common')({
     },
     devServer: {
         historyApiFallback: true,
-        before(app) {
-            apiMocker(app, path.resolve('./mocker/index.js'), {
-                proxy: {
-                    '/repos/*': 'https://api.github.com/',
-                },
-                changeHost: true,
-            })
-        }
+        disableHostCheck: true,
+        // before(app) {
+        //     apiMocker(app, path.resolve('./mocker/index.js'), {
+        //         proxy: {
+        //             '/repos/*': 'https://api.github.com/',
+        //         },
+        //         changeHost: true,
+        //     })
+        // }
     },
 })
