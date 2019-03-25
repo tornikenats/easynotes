@@ -44,6 +44,7 @@ module.exports = require('./webpack.common')({
     devServer: {
         historyApiFallback: true,
         disableHostCheck: true,
+        proxy: {'/api/v1/**': 'http://localhost:5001'},
         // before(app) {
         //     apiMocker(app, path.resolve('./mocker/index.js'), {
         //         proxy: {

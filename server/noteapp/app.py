@@ -2,9 +2,9 @@ from flask import Flask, jsonify
 from noteapp import commands
 from noteapp.settings import ProdConfig
 from noteapp.notes import notes
+from noteapp.player import player
 from noteapp.auth.views import auth
 from noteapp.extensions import bcrypt, mongo, login_manager, pyotp
-from noteapp.auth.helper import create_user
 from noteapp.converters import ObjectIDConverter, MongoEngineJSONEncoder
 
 def create_app(config_object=ProdConfig):
@@ -18,18 +18,13 @@ def create_app(config_object=ProdConfig):
     register_errorhandlers(app)
     register_shellcontext(app)
     register_commands(app)
-    populate_db(app)
 
     return app
 
 
-def populate_db(app):
-    with app.app_context():
-        create_user(app.config.get('FIRST_USER'), app.config.get('FIRST_USER_PASSWORD'))
-
-
 def register_blueprints(app):
-    app.register_blueprint(notes, url_prefix='/api/v1')
+    app.register_blueprint(notes, url_prefix='/api/v1/notes')
+    app.register_blueprint(player, url_prefix='/api/v1/player')
     app.register_blueprint(auth, url_prefix='/api/v1/auth')
 
 def register_extensions(app):
@@ -62,11 +57,7 @@ def register_shellcontext(app):
 
 
 def register_commands(app):
-    """Register Click commands."""
-    app.cli.add_command(commands.test)
-    app.cli.add_command(commands.lint)
-    app.cli.add_command(commands.clean)
-    app.cli.add_command(commands.urls)
+    app.cli.add_command(commands.add_user)
 
 
 def register_converters(app):

@@ -1,7 +1,7 @@
 from flask import jsonify
 from noteapp.extensions import login_manager, bcrypt, mongo
-from noteapp.auth.helper import hash_password
-from .models import User
+from noteapp.helpers.auth import hash_password
+from noteapp.models import User
 
 @login_manager.user_loader
 def user_loader(username):

@@ -1,7 +1,7 @@
 from flask import Blueprint, request,  jsonify, current_app
 from noteapp.extensions import flask_login, mongo, bcrypt
-from .models import User
-from .helper import hash_password, is_authenticated
+from noteapp.models import User
+from noteapp.helpers.auth import hash_password, is_authenticated
 import re 
 
 auth = Blueprint('auth', __name__)
