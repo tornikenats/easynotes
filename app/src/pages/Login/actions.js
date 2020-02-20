@@ -1,4 +1,4 @@
-import { fetchNotes } from 'containers/Notes/actions'
+import { fetchNotes } from 'pages/Notes/actions'
 
 export const REQUEST_LOGIN = 'REQUEST_LOGIN'
 export const RECIEVE_LOGIN = 'RECIEVE_LOGIN'

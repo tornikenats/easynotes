@@ -7,11 +7,11 @@ import { fromJS } from 'immutable'
 import { routerMiddleware } from 'react-router-redux'
 import createSagaMiddleware from 'redux-saga'
 import createReducer from './reducers'
+import thunkMiddleware from 'redux-thunk'
+import { createLogger } from 'redux-logger'
 
 const sagaMiddleware = createSagaMiddleware()
 
-import thunkMiddleware from 'redux-thunk'
-import { createLogger } from 'redux-logger'
 const loggerMiddleware = createLogger()
 
 export default function configureStore(initialState = {}, history) {

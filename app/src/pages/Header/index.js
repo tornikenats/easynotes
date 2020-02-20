@@ -1,5 +1,5 @@
 import React from 'react'
-import { sendRequestLogout } from 'containers/Login/actions'
+import { sendRequestLogout } from 'pages/Login/actions'
 import { connect } from 'react-redux'
 import Navigation from './Navigation'
 import Title from './Title'
@@ -8,7 +8,7 @@ import Item from './Item'
 import Container from 'components/Container'
 import Button from 'components/Button'
 import { createStructuredSelector } from 'reselect'
-import { makeSelectIsAuthenticated, makeSelectCurrentUser } from 'containers/Login/selector'
+import { makeSelectIsAuthenticated, makeSelectCurrentUser } from 'pages/Login/selector'
 
 let Header = ({ user, isAuthenticated, logout }) => {
     return (

@@ -2,17 +2,16 @@ import React, { Component } from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import configureStore from './configureStore'
-import App from 'containers/App'
-import { checkLoggedIn } from 'containers/Login/actions'
+import App from './pages/App'
+import { checkLoggedIn } from './pages/Login/actions'
 import { BrowserRouter as Router } from 'react-router-dom'
-
 import './global-styles'
-require('milligram/dist/milligram.min.css')
 import 'sanitize.css'
+import 'milligram/dist/milligram.min.css'
 
 const store = configureStore()
 
-export default class Root extends Component {
+class Root extends Component {
     componentWillMount() {
         store.dispatch(checkLoggedIn())
     }

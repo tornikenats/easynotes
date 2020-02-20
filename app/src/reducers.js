@@ -6,7 +6,7 @@ import { fromJS } from 'immutable'
 import { combineReducers } from 'redux-immutable'
 import { LOCATION_CHANGE } from 'react-router-redux'
 
-import userReducer from 'containers/Login/reducer'
+import userReducer from 'pages/Login/reducer'
 
 const globalReducer = combineReducers({
   user: userReducer,

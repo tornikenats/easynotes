@@ -16,6 +16,11 @@ let notes = [
 let authenticated = false
 
 const proxy = {
+  _proxy: {
+    httpProxy: {
+      port: 4000
+    }
+  },
   // NOTES
   'GET /api/v1/notes': (req, res) => {
     console.log('---->', req.params)
