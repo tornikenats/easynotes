@@ -1,5 +1,5 @@
 from flask import current_app
-from noteapp.extensions import bcrypt, pyotp
+from noteapp.extensions import bcrypt
 from noteapp.models import User
 
 
@@ -9,5 +9,5 @@ def hash_password(password):
     return hash
 
 
-def is_authenticated(user_dict, user_secret, otp_token):
-    return user_dict and bcrypt.check_password_hash(user_dict['secret'], user_secret) and pyotp.verify(otp_token)
+def is_authenticated(user_dict, user_secret):
+    return user_dict and bcrypt.check_password_hash(user_dict['secret'], user_secret)

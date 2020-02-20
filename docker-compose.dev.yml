@@ -26,18 +26,9 @@ services:
     image: registry.skivri.ge:443/notes-server
     secrets:
       - APP_SECRET
-      - FIRST_USER
-      - FIRST_USER_PASSWORD
-      - OTP_SECRET
   
 secrets:
   APP_SECRET:
-    external: true
-  FIRST_USER:
-    external: true
-  FIRST_USER_PASSWORD:
-    external: true
-  OTP_SECRET:
     external: true
 
 networks:

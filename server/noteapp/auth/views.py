@@ -15,10 +15,9 @@ def login():
 
     regx = re.compile('^{}$'.format(username), re.IGNORECASE)
     user_dict = mongo.db.users.find_one({'username': regx})
-    user_secret = secret[0:4]
-    otp_token = secret[4:]
+    user_secret = secret
 
-    if is_authenticated(user_dict, user_secret, otp_token):
+    if is_authenticated(user_dict, user_secret):
         user = User(user_dict['username'], user_secret)
         flask_login.login_user(user)
         resp = {
@@ -39,25 +38,26 @@ def login():
     return jsonify(resp), 401
 
 
-@auth.route('/register', methods=['POST'])
-def register():
-    post_data = request.get_json()
-    username = post_data.get('username')
-    secret = post_data.get('secret')
-    hashed = hash_password(secret)
+# DISABLE REGISTRATION
+# @auth.route('/register', methods=['POST'])
+# def register():
+#     post_data = request.get_json()
+#     username = post_data.get('username')
+#     secret = post_data.get('secret')
+#     hashed = hash_password(secret)
 
-    id = User(username, hashed).save()
-    if id:
-        resp = {
-            'status': 0,
-            'message': 'Successfully registered.',
-        }
-        return jsonify(resp), 201
-    resp = {
-        'status': 'fail',
-        'message': 'Some error occurred. Please try again.'
-    }
-    return jsonify(resp), 401
+#     id = User(username, hashed).save()
+#     if id:
+#         resp = {
+#             'status': 0,
+#             'message': 'Successfully registered.',
+#         }
+#         return jsonify(resp), 201
+#     resp = {
+#         'status': 'fail',
+#         'message': 'Some error occurred. Please try again.'
+#     }
+#     return jsonify(resp), 401
 
 
 @auth.route('/status')

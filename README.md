@@ -31,12 +31,6 @@ ssl_certificate_key <your-privkey.pem>;
 
 * APP_SECRET
   * default: CHANGE_ME
-* FIRST_USER
-  * default: CHANGE_ME
-* FIRST_USER_PASSWORD
-  * default: CHAN
-* PYOTP_SECRET_KEY
-  * default: CHANGEMEbase3232
 
 #### Structure
 * Backend (port: 5000)
