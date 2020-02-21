@@ -4,8 +4,6 @@ import NoteContainer from './Note'
 import { connect } from 'react-redux'
 import EntryContainer from 'pages/Entry'
 import List from './List'
-import { makeSelectNotes } from './selector'
-import { createStructuredSelector } from 'reselect'
 import injectReducer from 'utils/injectReducer'
 import reducer from './reducer'
 import { compose } from 'redux'
@@ -34,8 +32,21 @@ const NoteList = ({ notes }) => (
     </NoteWrapper>
 )
 
-const mapStateToProps = createStructuredSelector({
-    notes: makeSelectNotes()
+const equalityTest = currentEntry => note => {
+    if (!currentEntry) return true
+    let noteContent = note.tags.join(' ').toLowerCase()
+    return contains(currentEntry, noteContent)
+}
+
+const contains = (entry, target) => {
+    let entryTokens = entry.toLowerCase().split(' ')
+    return entryTokens.every(token => target.indexOf(token) != -1)
+}
+
+const mapStateToProps = state => ({
+    notes: state.note.notes
+        .filter(note => equalityTest(state.note.filter)(note))
+        .sort((a, b) => b.ts - a.ts)
 })
 const withConnect = connect(mapStateToProps)
 

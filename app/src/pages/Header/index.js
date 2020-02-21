@@ -7,15 +7,13 @@ import List from './List'
 import Item from './Item'
 import Container from 'components/Container'
 import Button from 'components/Button'
-import { createStructuredSelector } from 'reselect'
-import { makeSelectIsAuthenticated, makeSelectCurrentUser } from 'pages/Login/selector'
 
 let Header = ({ user, isAuthenticated, logout }) => {
     return (
         <Navigation>
             <Container>
                 <Title>EasyNotes</Title>
-                {isAuthenticated &&
+                {isAuthenticated && user && 
                     <List>
                         <Item>
                             <span><strong>{user.username}</strong></span>
@@ -37,9 +35,9 @@ let Header = ({ user, isAuthenticated, logout }) => {
     )
 }
 
-const mapStateToProps = createStructuredSelector({
-    isAuthenticated: makeSelectIsAuthenticated(),
-    user: makeSelectCurrentUser()
+const mapStateToProps = state => ({
+    auth: state.global.user.currentUser,
+    isAuthenticated: state.global.user.auth.isAuthenticated
 })
 
 const mapDispatchToProps = dispatch => ({

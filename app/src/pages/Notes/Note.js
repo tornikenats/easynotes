@@ -2,8 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { deleteNote, selectNote } from './actions'
 import Note from 'components/Note'
-import { createStructuredSelector } from 'reselect'
-import { makeSelectSelectedNote } from './selector';
 
 const NoteContainer = ({ note, deleteNote, selectNote, selectedNote }) => {
     let isSelected = () => {
@@ -11,7 +9,7 @@ const NoteContainer = ({ note, deleteNote, selectNote, selectedNote }) => {
     }
 
     return (
-        <Note 
+        <Note
             note={note}
             onDelete={deleteNote}
             onSelect={selectNote}
@@ -20,8 +18,8 @@ const NoteContainer = ({ note, deleteNote, selectNote, selectedNote }) => {
     )
 }
 
-const mapStateToProps = createStructuredSelector({
-    selectedNote: makeSelectSelectedNote()
+const mapStateToProps = state => ({
+    selectedNote: state.note.selectedNote
 })
 
 const mapDispatchToProps = dispatch => ({

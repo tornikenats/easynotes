@@ -1,8 +1,6 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { createStructuredSelector } from 'reselect'
-import { makeSelectIsAuthenticated } from 'pages/Login/selector'
 
 const PrivateRoute = ({ component: Component, isAuthenticated, ...rest }) => (
     <Route {...rest} render={props => (
@@ -17,8 +15,8 @@ const PrivateRoute = ({ component: Component, isAuthenticated, ...rest }) => (
     )} />
 )
 
-const mapStateToProps = createStructuredSelector({
-    isAuthenticated: makeSelectIsAuthenticated()
+const mapStateToProps = state => ({
+    isAuthenticated: state.global.user.auth.isAuthenticated
 })
 
 export default connect(mapStateToProps)(PrivateRoute)

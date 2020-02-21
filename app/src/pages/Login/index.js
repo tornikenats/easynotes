@@ -2,12 +2,10 @@ import { connect } from 'react-redux'
 import Login from './Login'
 import { login } from './actions'
 import { withRouter } from 'react-router-dom'
-import { createStructuredSelector } from 'reselect'
-import { makeSelectLoginError, makeSelectShouldRedirect } from './selector'
 
-const mapStateToProps = createStructuredSelector({
-    loginMessage: makeSelectLoginError(),
-    redirectToReferrer: makeSelectShouldRedirect()
+const mapStateToProps = state => ({
+    redirectToReferrer: state.global.user.auth.redirectToReferrer,
+    loginMessage: state.global.user.error
 })
 
 const mapDispatchToProps = dispatch => ({

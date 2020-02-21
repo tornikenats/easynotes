@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addNote, updateNote, unselectNote, updateFilter } from 'pages/Notes/actions'
-import { createStructuredSelector } from 'reselect'
-import { makeSelectSelectedNote } from 'pages/Notes/selector'
 import TagList from './TagList'
 import TextArea from './TextArea'
 import styled from 'styled-components'
@@ -116,8 +114,8 @@ class TextEntry extends Component {
     }
 }
 
-const mapStateToProps = createStructuredSelector({
-    selectedNote: makeSelectSelectedNote()
+const mapStateToProps = state => ({
+    selectedNote: state.note.selectedNote
 })
 
 const mapDispatchToProps = dispatch => ({

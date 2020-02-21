@@ -1,4 +1,3 @@
-import { fromJS } from 'immutable'
 import {
     RECIEVE_LOGIN,
     REQUEST_LOGIN,
@@ -6,7 +5,7 @@ import {
     FAILED_LOGIN
 } from './actions'
 
-export const initialState = fromJS({
+export const initialState = {
     isFetching: false,
     error: false,
     currentUser: {},
@@ -14,29 +13,43 @@ export const initialState = fromJS({
         isAuthenticated: false,
         redirectToReferrer: false
     },
-})
+}
 
 export default function auth(state = initialState, action) {
     switch (action.type) {
         case REQUEST_LOGIN:
-            return state
-                .set('isFetching', true)
-                .set('error', false)
-                .setIn(['auth', 'isAuthenticated'], false)
+            return Object.assign({}, state, {
+                isFetching: true,
+                error: false,
+                auth: {
+                    ...state.auth,
+                    isAuthenticated: false
+                }
+            })
         case RECIEVE_LOGIN:
-            return state
-                .set('isFetching', false)
-                .setIn(['auth', 'isAuthenticated'], action.payload.isAuthenticated)
-                .setIn(['auth', 'redirectToReferrer'], action.payload.isAuthenticated)
-                .set('currentUser', action.payload.user)
+            return Object.assign({}, state, {
+                isFetching: false,
+                currentUser: action.payload.user,
+                auth: {
+                    ...state.auth,
+                    isAuthenticated: action.payload.isAuthenticated,
+                    redirectToReferrer: action.payload.isAuthenticated
+                }
+            })
         case RECIEVE_LOGOUT:
-            return state
-                .set('isFetching', false)
-                .setIn(['auth', 'isAuthenticated'], false)
-                .setIn(['auth', 'redirectToReferrer'], false)
-                .set('currentUser', {})
+            return Object.assign({}, state, {
+                isFetching: false,
+                currentUser: {},
+                auth: {
+                    ...state.auth,
+                    isAuthenticated: false,
+                    redirectToReferrer: false
+                }
+            })
         case FAILED_LOGIN:
-            return state.set('error', action.payload.message)
+            return Object.assign({}, state, {
+                error: action.payload.message
+            })
         default:
             return state
     }

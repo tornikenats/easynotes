@@ -2,8 +2,7 @@
  * Combine all reducers in this file and export the combined reducers.
  */
 
-import { fromJS } from 'immutable'
-import { combineReducers } from 'redux-immutable'
+import { combineReducers } from 'redux'
 import { LOCATION_CHANGE } from 'react-router-redux'
 
 import userReducer from 'pages/Login/reducer'
@@ -21,9 +20,9 @@ const globalReducer = combineReducers({
  */
 
 // Initial routing state
-const routeInitialState = fromJS({
+const routeInitialState = {
   location: null,
-})
+}
 
 /**
  * Merge route into the global application state
