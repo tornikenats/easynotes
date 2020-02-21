@@ -13,3 +13,10 @@ from noteapp.helpers.auth import hash_password
 @with_appcontext
 def add_user(username, password):
     User(username, hash_password(password)).save()
+
+
+@click.command()
+@click.argument('password')
+@with_appcontext
+def encrypt_password(password):
+    print(hash_password(password))

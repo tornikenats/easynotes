@@ -4,7 +4,7 @@ from noteapp.settings import ProdConfig
 from noteapp.notes import notes
 from noteapp.player import player
 from noteapp.auth.views import auth
-from noteapp.extensions import bcrypt, mongo, login_manager, pyotp
+from noteapp.extensions import bcrypt, mongo, login_manager
 from noteapp.converters import ObjectIDConverter, MongoEngineJSONEncoder
 
 def create_app(config_object=ProdConfig):
@@ -31,7 +31,6 @@ def register_extensions(app):
     bcrypt.init_app(app)
     mongo.init_app(app)
     login_manager.init_app(app)
-    pyotp.init_app(app)
 
 
 def register_errorhandlers(app):
@@ -58,6 +57,7 @@ def register_shellcontext(app):
 
 def register_commands(app):
     app.cli.add_command(commands.add_user)
+    app.cli.add_command(commands.encrypt_password)
 
 
 def register_converters(app):

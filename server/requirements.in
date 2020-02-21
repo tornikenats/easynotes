@@ -2,6 +2,5 @@ flask
 flask-bcrypt
 flask-login
 flask-pymongo
-flask-pyotp
 gunicorn
 requests
