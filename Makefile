@@ -3,7 +3,7 @@ NC=\033[0m
 
 images:
 	printf "${GREEN}Building images${NC}\n"
-	docker build --file app/Dockerfile-prod -t notes-app ./app
+	docker build -t notes-app ./app
 	docker build -t notes-server ./server
 
 push: images

@@ -29,11 +29,22 @@ class Notes(MethodView):
         data['ts'] = time.time()
 
         if note_id:
-            resp = mongo.db.entries.update({'_id': note_id}, {'$set': data})
+            return jsonify({}), 400
         else:
             resp = mongo.db.entries.insert_one(data)
 
         return jsonify(data)
+
+    @flask_login.login_required
+    def put(self, note_id):
+        data = request.get_json()
+        data['ts'] = time.time()
+
+        if note_id:
+            resp = mongo.db.entries.update({'_id': note_id}, {'$set': data})
+            return jsonify(mongo.db.entries.find_one({'_id': note_id}))
+
+        return jsonify({}), 400
 
     @flask_login.login_required
     def delete(self, note_id):
