@@ -8,14 +8,15 @@ services:
 
   app:
     container_name: notes-app
+    command: npm run start
     build:
       context: ./app
       dockerfile: Dockerfile-dev
-    image: registry.skivri.ge:443/notes-app
     volumes:
-      - './app/app:/usr/src/app/app'
+      - ./app/src:/usr/src/app/src
+      - ./app/public:/usr/src/app/public
     ports:
-      - 8081:8080
+      - 3000:3000
     environment:
       - NODE_ENV=development
       - VIRTUAL_HOST=notes.skivri.local
@@ -23,7 +24,6 @@ services:
   server: 
     container_name: notes-server
     build: server
-    image: registry.skivri.ge:443/notes-server
     secrets:
       - APP_SECRET
   

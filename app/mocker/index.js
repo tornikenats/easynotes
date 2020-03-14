@@ -18,7 +18,7 @@ let authenticated = false
 const proxy = {
   _proxy: {
     httpProxy: {
-      port: 4000
+      port: 5000
     }
   },
   // NOTES
