@@ -6,6 +6,7 @@ import { combineReducers } from 'redux'
 import { LOCATION_CHANGE } from 'react-router-redux'
 
 import userReducer from 'pages/Login/reducer'
+import noteReducer from 'components/Notes/reducer'
 
 const globalReducer = combineReducers({
   user: userReducer,
@@ -46,6 +47,7 @@ export default function createReducer(injectedReducers) {
   return combineReducers({
     route: routeReducer,
     global: globalReducer,
+    note: noteReducer,
     ...injectedReducers,
   })
 }

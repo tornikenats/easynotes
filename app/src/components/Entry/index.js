@@ -1,13 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addNote, updateNote, unselectNote, updateFilter } from 'pages/Notes/actions'
+import { addNote, updateNote, unselectNote, updateFilter } from 'components/Notes/actions'
 import TagList from './TagList'
-import TextArea from './TextArea'
+import TextArea from 'components/TextArea'
 import styled from 'styled-components'
-
-const TextEntryWrapper = styled.div`
-    padding-top: 0.2rem;
-`
 
 class TextEntry extends Component {
     constructor(props) {
@@ -100,7 +96,7 @@ class TextEntry extends Component {
     render() {
         let { text, tags } = this.state
         return (
-            <TextEntryWrapper>
+            <div className="mt-1">
                 <TagList tags={tags} />
                 <TextArea
                     autoFocus
@@ -109,7 +105,7 @@ class TextEntry extends Component {
                     onChange={this.onChange.bind(this)}
                     value={text}>
                 </TextArea>
-            </TextEntryWrapper>
+            </div>
         )
     }
 }

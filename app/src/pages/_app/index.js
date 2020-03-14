@@ -1,13 +1,13 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
-import NotesContainer from 'pages/Notes'
+import Home from 'pages/Home'
 import Login from 'pages/Login'
 import PrivateRoute from 'utils/PrivateRoute'
 
 const App = () => (
     <Switch>
         <Route path="/login" component={Login} />
-        <PrivateRoute path="/" component={NotesContainer} />
+        <PrivateRoute path="/" component={Home} />
     </Switch>
 )
 

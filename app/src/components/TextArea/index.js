@@ -1,7 +1,8 @@
-// import Input from 'components/Input'
-import styled from 'styled-components'
+import React from 'react'
+import styles from './index.module.scss'
 
-const TextArea = styled.textarea`
-`
+const TextArea = props => (
+    <textarea className={`form-input ${styles.textarea}`} {...props}/>
+)
 
 export default TextArea

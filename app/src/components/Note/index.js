@@ -1,31 +1,37 @@
 import React from 'react'
-import Wrapper from './Wrapper'
-import Delete from './Delete'
 import uuid4 from 'uuid/v4'
 import PropTypes from 'prop-types'
 import Linkify from 'react-linkify'
 import Tag from 'components/Tag'
-import Edit from 'components/Edit'
-
+import './styles.scss'
 
 class Note extends React.Component {
     render() {
         const { note, onDelete, onSelect, active } = this.props
         return (
-            <Wrapper onClick={e => e.target !== this.deleteBtn && onSelect(note)}>
-                <Edit active={active} />
-                {note.tags && note.tags.map(tag =>
-                    <Tag
-                        key={uuid4()}
-                        text={tag}
-                    />
-                )}
-                <Linkify tagName="div" properties={{target: '_blank'}}>
-                    {note.text}
-                </Linkify>
-                <Delete onClick={() => onDelete(note)}
-                    innerRef={deleteBtn => this.deleteBtn = deleteBtn} />
-            </Wrapper>
+            <div className={"note columns p-1 s-rounded" + (active ? ' active' : '')}
+                onClick={e => e.target !== this.deleteBtn && onSelect(note)}>
+                <div className="column col-auto">
+                    <div className="text-error c-hand"
+                        innerRef={deleteBtn => this.deleteBtn = deleteBtn}
+                        onClick={() => onDelete(note)}>
+                        <i className="icon icon-cross" />
+                    </div>
+                </div>
+                <div className="column col-lg-auto">
+                    {note.tags && note.tags.map(tag =>
+                        <Tag
+                            key={uuid4()}
+                            text={tag}
+                        />
+                    )}
+                    <div className="d-inline">
+                        <Linkify tagName="div" properties={{ target: '_blank' }}>
+                            {note.text}
+                        </Linkify>
+                    </div>
+                </div>
+            </div>
         )
     }
 }

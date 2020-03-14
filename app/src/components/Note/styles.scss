@@ -1,0 +1,10 @@
+@import "spectre.css/src/_variables.scss";
+
+.note {
+  &:hover {
+    background: $bg-color;
+  }
+}
+.note.active {
+    background-color: $highlight-color !important;
+}

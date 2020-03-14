@@ -1,11 +1,7 @@
-import styled from 'styled-components'
+import React from 'react'
 
-const Container = styled.div`
-  margin: 0 auto;
-  max-width: 112rem;
-  padding: 0 2rem;
-  position: relative;
-  width: 100%;
-`
+const Container = ({ className, ...rest }) => (
+  <div className={"container " + (className ? className : '')} {...rest} />
+)
 
 export default Container

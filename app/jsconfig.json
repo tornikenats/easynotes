@@ -6,9 +6,9 @@
         "checkJs": true,
         "baseUrl": "./src/",
         "paths": {
-            "pages/*": ["./src/pages/*"],
-            "utils/*": ["./src/utils/*"],
-            "components/*": ["./src/components/*"]
+            "pages": ["./src/pages"],
+            "utils": ["./src/utils"],
+            "components": ["./src/components"]
         }
     },
     "exclude": [
