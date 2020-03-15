@@ -100,7 +100,9 @@ class TextEntry extends Component {
                 <TagList tags={tags} />
                 <TextArea
                     autoFocus
+                    className="text-thin"
                     placeholder="Enter note"
+                    onBlur={this.onCancel.bind(this)}
                     onKeyPress={this.onKeyPress.bind(this)}
                     onChange={this.onChange.bind(this)}
                     value={text}>
