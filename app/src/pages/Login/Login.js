@@ -36,10 +36,11 @@ let Login = ({ loginMessage, onLoginClick, redirectToReferrer, ...props }) => {
 
     return (
         <LoginWrapper>
-            <H3>EasyNotes</H3>
-            <Form onSubmit={onSubmit}>
-                <fieldset>
+            <H3>Easy Notes</H3>
+            <Form onSubmit={onSubmit} className="text-center">
+                <div className="form-group mb-2">
                     <input
+                        className="form-input mb-1"
                         type="text"
                         name="username"
                         id="usernameField"
@@ -47,15 +48,16 @@ let Login = ({ loginMessage, onLoginClick, redirectToReferrer, ...props }) => {
                         ref={node => { usernameField = node }}
                     />
                     <input
+                        className="form-input"
                         type="password"
                         name="password"
                         id="passwordField"
                         placeholder="Password"
                         ref={node => { passwordField = node }}
                     />
-                    <Button isFullWidth={true} type="submit">Login</Button>
-                    <span className='error'>{loginMessage}</span>
-                </fieldset>
+                </div>
+                <Button type="submit">Login</Button>
+                <span className='error'>{loginMessage}</span>
             </Form>
         </LoginWrapper>
     )
