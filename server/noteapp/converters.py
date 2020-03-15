@@ -10,7 +10,7 @@ class ObjectIDConverter(BaseConverter):
         except (InvalidId, ValueError, TypeError):
             raise ValidationError()
     def to_url(self, value):
-        return value.binary
+        return str(value)
 
 
 class MongoEngineJSONEncoder(JSONEncoder):
