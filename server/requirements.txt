@@ -4,26 +4,50 @@
 #
 #    pip-compile
 #
-bcrypt==3.1.7             # via flask-bcrypt
-certifi==2019.11.28       # via requests
-cffi==1.14.0              # via bcrypt
-chardet==3.0.4            # via requests
-click==7.1.1              # via flask
-flask-bcrypt==0.7.1       # via -r requirements.in
-flask-login==0.5.0        # via -r requirements.in
-flask-pymongo==2.3.0      # via -r requirements.in
-flask==1.1.1              # via -r requirements.in, flask-bcrypt, flask-login, flask-pymongo
-gunicorn==20.0.4          # via -r requirements.in
-idna==2.9                 # via requests
-itsdangerous==1.1.0       # via flask
-jinja2==2.11.1            # via flask
-markupsafe==1.1.1         # via jinja2
-pycparser==2.20           # via cffi
-pymongo==3.10.1           # via flask-pymongo
-requests==2.23.0          # via -r requirements.in
-six==1.14.0               # via bcrypt
-urllib3==1.25.8           # via requests
-werkzeug==1.0.0           # via flask
+bcrypt==3.1.7
+    # via flask-bcrypt
+certifi==2022.12.7
+    # via requests
+cffi==1.14.0
+    # via bcrypt
+chardet==3.0.4
+    # via requests
+click==7.1.1
+    # via flask
+flask==1.1.1
+    # via
+    #   -r requirements.in
+    #   flask-bcrypt
+    #   flask-login
+    #   flask-pymongo
+flask-bcrypt==0.7.1
+    # via -r requirements.in
+flask-login==0.5.0
+    # via -r requirements.in
+flask-pymongo==2.3.0
+    # via -r requirements.in
+gunicorn==20.0.4
+    # via -r requirements.in
+idna==2.9
+    # via requests
+itsdangerous==1.1.0
+    # via flask
+jinja2==2.11.1
+    # via flask
+markupsafe==1.1.1
+    # via jinja2
+pycparser==2.20
+    # via cffi
+pymongo==3.10.1
+    # via flask-pymongo
+requests==2.23.0
+    # via -r requirements.in
+six==1.14.0
+    # via bcrypt
+urllib3==1.25.8
+    # via requests
+werkzeug==1.0.0
+    # via flask
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
